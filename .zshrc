@@ -39,7 +39,13 @@ alias dcmp="docker-compose"
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME/.dotfiles'
 
-PROMPT="%B%F{red}%n@%m%f%b:%F{blue}%~%f %# "
+host_color=$(case $(hostname) in
+  vale)	echo "red" ;;
+  thor)	echo "yellow" ;;
+  DW-MPSTRUCHA)	echo "cyan" ;;
+esac)
+
+PROMPT="%B%F{$host_color}%n@%m%f%b:%F{blue}%~%f %# "
 
 #export DENO_INSTALL="/home/mathias/.deno"
 #export PATH="$PATH:$DENO_INSTALL/bin"
